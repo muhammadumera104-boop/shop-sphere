@@ -1,0 +1,736 @@
+17
+PROJECT PROPOSAL  &  UI/UX PROTOTYPE
+ShopSphere
+Multi-Vendor Marketplace  +  Digital Khata
+One platform where buyers shop with confidence, shopkeepers sell online
+and run their business books digitally, delivery partners update shipments,
+and admins keep everything trusted and safe.
+Buyer Mode
+Seller Mode
+Digital Khata
+Delivery Tracking
+CREATED TOGETHER BY
+Muhammad Hassan Advani
+Roll No. 055
+BSCS, GU Tech
+Muhammad Umer
+Roll No. 036
+BSCS, 1st Semester
+Mega Sale  -  up to 40% off
+Verified sellers  |  Easy returns  |  Track your order
+
+OVERVIEW
+The idea in one page
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+02
+Small shopkeepers sell offline and keep credit records in paper registers. Buyers
+want one trusted place to find products, compare prices and track orders.
+ShopSphere joins both worlds: a Daraz-style multi-vendor marketplace with a
+built-in Easy Khata-style digital ledger, under one account.
+WHY THIS MATTERS
+Sellers get shop, stock, orders and credit records in one dashboard.
+Buyers get search, filters, sale prices, cart, checkout and tracking.
+Admins get approvals, moderation, audit logs and reports to keep trust high.
+5
+User roles
+3
+Core pillars
+8
+Build phases
+1
+Account, Buyer + Seller
+Marketplace
+Discover, compare, order and track
+products from many verified sellers.
+Seller Mode
+Any eligible user opens a shop, lists
+products, manages stock and fulfils orders.
+Digital Khata
+Customer and supplier ledger, credit sales,
+payments, expenses and reports.
+
+FOUNDERS
+The team behind ShopSphere
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+03
+The website idea, the planning and this complete presentation were created together by both team members.
+H
+Muhammad Hassan Advani
+ Roll No. 055
+BSCS student, GU Tech
+EMAIL
+hassanadvani08@gmail.com
+GitHub: Hassan123advani
+ROLE IN PROJECT
+Co-creator of the idea, planning, UI/UX direction and this proposal.
+U
+Muhammad Umer
+ Roll No. 036
+BSCS, 1st Semester
+EMAIL
+muhammadumera104@gmail.com
+ROLE IN PROJECT
+Co-creator of the idea, planning, UI/UX direction and this proposal.
+Shared vision
+Two students building a real, useful platform for local shops and buyers, step by step and honestly.
+
+DESIGN PREVIEW
+Buyer storefront: UI prototype
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+04
+shopsphere.pk
+S
+ShopSphere
+Search products, shops, brands...
+Buyer  |  Seller
+Wishlist
+Cart (2)
+Account
+Mega Sale Week
+Up to 40% off  |  Verified sellers  |  Cash on delivery
+Shop now
+All
+Electronics
+Fashion
+Home
+Grocery
+Beauty
+Books
+Featured Deals
+See all
+-30%
+Wireless Earbuds
+Rs. 3,499
+Rs. 4,999
+Add to cart
+-21%
+Cotton Kurta
+Rs. 1,899
+Rs. 2,400
+Add to cart
+Study Desk Lamp
+Rs. 1,250
+Add to cart
+-20%
+Smart Watch
+Rs. 5,990
+Rs. 7,500
+Add to cart
+Verified sellers
+Easy 7-day returns
+Live order tracking
+Secure checkout
+What makes it premium
+1
+Sticky smart header
+Search, wishlist, cart and the
+Buyer/Seller switch are always one
+tap away.
+2
+Clear price hierarchy
+Sale price, old price and discount
+badge make deals instantly readable.
+3
+Consistent product cards
+Same image ratio, rating and a clear
+add-to-cart action on every card.
+4
+Trust signals
+Verified sellers, returns and tracking
+shown honestly, never faked.
+5
+Fully responsive
+Multi-column desktop, adaptive
+tablet, thumb-friendly mobile layout.
+
+DESIGN PREVIEW
+Seller Mode dashboard: UI prototype
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+05
+shopsphere.pk/seller
+ShopSphere
+SELLER MODE
+Overview
+Products
+Inventory
+Orders
+Promotions
+Digital Khata
+Reports
+Shop settings
+Good morning, Ahmed General Store
+Sample data for prototype
++ Add product
+Orders today
+24
+Revenue
+Rs. 48,300
+Low stock
+5 items
+Khata due
+Rs. 12,750
+Sales this week
+Mon
+Tue
+Wed
+Thu
+Fri
+Sat
+Sun
+Top products
+Earbuds
+Kurta
+Desk Lamp
+Smart Watch
+Recent orders
+Order
+Customer
+Total
+Status
+#1042
+Ali Raza
+Rs. 3,499
+Packed
+#1041
+Sara Khan
+Rs. 1,899
+Shipped
+#1040
+Bilal Ahmed
+Rs. 5,990
+Delivered
+#1039
+Hina Malik
+Rs. 1,250
+Pending
+Seller tools at a glance
+1
+Activate in one click
+Any eligible buyer can switch to
+Seller Mode and create a shop.
+2
+Products and stock
+SKU, variants, sale price, low-stock
+alerts, no overselling.
+3
+Order workflow
+Accept, pack, hand to courier,
+complete, with status history.
+4
+Insights
+Revenue, top products and
+downloadable reports.
+5
+Khata inside
+Credit and payments live in the same
+dashboard.
+
+DESIGN PREVIEW
+Digital Khata: UI prototype
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+06
+Digital Khata
+Total receivable
+Rs. 12,750
+Customers
+A
+Ali Raza
+Due Rs. 4,200
+S
+Sara Khan
+Due Rs. 3,150
+B
+Bilal Ahmed
+Paid up
+H
+Hina Malik
+Due Rs. 5,400
+U
+Usman Traders
+Paid up
++
+< Ali Raza
+Balance due
+Rs. 4,200
+You gave
+You got
+History
+12 Oct
+Goods on credit
++ 2,500
+15 Oct
+Payment received
+- 1,000
+20 Oct
+Goods on credit
++ 2,700
+Send reminder (with consent)
+Replace the paper register
+A simple, trustworthy ledger that sits next to the shop
+dashboard, so a shopkeeper never has to switch apps.
+Customers and suppliers
+Create records, add notes and contact details.
+Credit and payments
+Record goods on credit, payments received and dates.
+Live balances
+Outstanding amount and full history per account.
+Expenses
+Categorize shop expenses and review them by date.
+Reports
+Sales, expenses, receivables and net result.
+Audit history
+Every change to a ledger entry is logged.
+Khata records are kept separate from real marketplace
+payments.
+
+FEATURES BY ROLE
+Who uses the platform
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+07
+Guest
+Browse products, categories and shops.
+Search and filter. Sign in to order.
+Buyer
+Profile, addresses, cart, wishlist, checkout,
+order tracking, reviews, returns and support.
+Seller / Shopkeeper
+Shop profile, products, inventory, orders,
+promotions, Khata ledger and reports.
+Delivery Partner
+See assigned shipments, update progress
+and record delivery outcome.
+Administrator
+Approve sellers, moderate listings, manage
+categories, promotions, disputes and audit
+logs.
+One account
+Buyers and sellers use the same identity.
+Switch modes any time. Permissions are
+always enforced on the server.
+Role-based access
+
+FLOWS
+How it works: key user journeys
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+08
+Buyer
+1
+Browse
+2
+Search / filter
+3
+Product
+4
+Cart
+5
+Checkout
+6
+Pay
+7
+Track
+Seller
+1
+Register
+2
+Set up shop
+3
+Add products
+4
+Manage stock
+5
+Get order
+6
+Ship
+7
+Review sales
+Khata
+1
+Pick customer
+2
+Add credit
+3
+Record payment
+4
+Balance updates
+5
+Statement
+Admin
+1
+Review seller
+2
+Approve / reject
+3
+Monitor orders
+4
+Handle disputes
+5
+Reports
+Every step is saved with a status and timestamp, so buyers and sellers always see the same truth.
+
+SITEMAP
+Every page of the website
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+09
+Public
+8
+Home
+Category page
+Search results
+Product details
+Shop storefront
+Login / Register
+Cart
+Checkout
+Buyer
+8
+My profile
+Addresses
+Orders list
+Order tracking
+Wishlist
+Reviews
+Returns / refunds
+Notifications
+Seller
+11
+Seller dashboard
+Products list
+Add / edit product
+Inventory
+Seller orders
+Promotions
+Khata: customers
+Khata: ledger
+Expenses
+Reports
+Shop settings
+Admin
+8
+Admin dashboard
+Seller approvals
+Listing moderation
+Categories
+Orders / disputes
+Promotions rules
+Audit log
+Platform settings
+Delivery
+3
+Assigned shipments
+Update status
+Delivery confirmation
+
+ARCHITECTURE
+Technology and data design
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+10
+Frontend
+Next.js (React) + TypeScript, responsive CSS, reusable design-system components.
+Backend / API
+Next.js server functions or Node.js + Express; validation and server-side role checks.
+Database
+PostgreSQL with Prisma migrations: users, shops, products, orders, ledger.
+Storage
+Managed object storage for product and shop images with upload limits.
+Integrations
+Payment gateway, email/SMS and courier APIs (after merchant onboarding).
+Deployment
+Git/GitHub, CI checks, HTTPS hosting, monitoring and backups.
+Core data entities
+ Users and Roles
+Shops
+Products and Variants
+Inventory
+Carts and Wishlists
+Orders and Items
+Payments and Refunds
+Shipments
+Coupons and Promotions
+Customers and Suppliers
+Ledger Entries
+Expenses
+Reviews and Support
+Notifications
+Audit Logs
+Built to grow
+Start with a lean MVP, then add advanced analytics,
+recommendations and multi-courier automation once the core
+workflows are stable.
+
+BACKEND
+Database design (PostgreSQL)
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+11
+users
+id, name, email, phone
+password_hash
+roles (buyer/seller/admin/delivery)
+status, created_at
+shops
+id, owner_user_id
+name, slug, logo, banner
+pickup_address
+status (pending/approved)
+categories
+id, parent_id
+name, slug
+image
+is_active
+products
+id, shop_id, category_id
+title, slug, description
+price, sale_price, sku
+status, brand
+product_variants
+id, product_id
+attributes (size/color)
+stock_quantity
+reserved_quantity
+orders
+id, buyer_id, address
+subtotal, discount, delivery_fee
+total, payment_method
+status, created_at
+order_items
+id, order_id, product_id
+shop_id, quantity
+price_snapshot
+item_status
+payments
+id, order_id
+method (COD/online)
+provider_reference
+status, amount
+shipments
+id, order_id
+delivery_partner_id
+tracking events
+status, delivered_at
+khata_parties
+id, shop_id
+type (customer/supplier)
+name, phone, notes
+opening_balance
+ledger_entries
+id, party_id
+type (credit/payment)
+amount, date, note
+created_by, edited log
+coupons
+id, code, shop_id
+discount type/value
+start/end dates
+usage_limit, min_spend
+Also: carts, cart_items, wishlists, addresses, reviews, support_tickets, notifications, expenses, audit_logs, refunds.
+
+BACKEND
+Backend modules and API
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+12
+Auth
+POST /auth/register, /login, /logout, /reset-password
+Hashed passwords, secure sessions
+Catalogue
+GET /products, /products/:slug, /categories, /shops/:slug
+Search, filters, pagination
+Cart
+GET/POST/PATCH/DELETE /cart/items
+Prices read from the database
+Orders
+POST /orders (checkout), GET /orders, PATCH /orders/:id/cancel
+Stock check inside a transaction
+Seller
+POST/PATCH /seller/products, /seller/orders/:id/status, /seller/shop
+Only the shop owner can edit
+Khata
+GET/POST /khata/parties, /khata/ledger, /khata/expenses, /khata/reports
+Every edit logged, balances calculated
+Admin
+PATCH /admin/sellers/:id/approve, /admin/listings/:id, GET /admin/audit
+Admin role + audit log
+Delivery
+GET /delivery/shipments, PATCH /delivery/shipments/:id
+Delivery role only
+Rules for every endpoint: validate input, check the logged-in role and ownership, never trust totals sent by the browser.
+
+SAFETY
+Security, trust and reliability
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+13
+Server-side permissions
+Roles and ownership are checked on
+the server for every protected action.
+Safe passwords and login
+Modern password hashing, secure
+sessions, safe account recovery.
+No raw card data
+Payments use a compliant provider;
+only references are stored.
+Correct prices
+Totals, discounts and coupons are
+calculated on the server, never trusted
+from the browser.
+Safe checkout
+Database transactions protect stock
+and order totals; no overselling.
+Abuse protection
+Input validation, rate limits and
+protection against common web
+attacks.
+Privacy first
+Collect only necessary data and
+restrict access to sensitive records.
+Audit and backups
+Admin actions are logged; backups
+and monitoring support recovery.
+Honesty rule: a feature is described as live only after its integration is configured and tested end to end.
+
+PLAN
+Roadmap and MVP
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+14
+1
+Requirements and
+ UI design
+2
+Project foundation
+ and auth
+3
+Catalogue and seller
+ tools
+4
+Cart, checkout and
+ orders
+5
+Promotions and
+ delivery
+6
+Digital Khata
+7
+Admin panel and
+ integrations
+8
+Testing and
+deployment
+MVP: first release
+ Registration and login
+Buyer browsing, search and filters
+Seller shop and product management
+Cart, checkout and orders
+Basic delivery statuses
+Admin panel
+Basic digital Khata ledger
+Later releases
+ Product recommendations and comparison
+Complex promotions and campaigns
+Multi-provider delivery automation
+Advanced analytics and seller reports
+Reminders through SMS / WhatsApp
+Online payment gateway rollout
+
+BUILD PLAN
+Hand-off brief for the coding agent
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+15
+How the complete website will be built
+1
+Inspect
+Check the project folder first; never overwrite working code.
+2
+Foundation
+Next.js + TypeScript, PostgreSQL, Prisma migrations, seed data for development.
+3
+Auth and roles
+Register, login, buyer / seller / admin / delivery permissions on the server.
+4
+Shops and products
+Seller Mode, product CRUD, image upload, variants, stock, search and filters.
+5
+Cart and orders
+Cart, checkout, COD, server-side totals, stock reservation, order statuses.
+6
+Digital Khata
+Parties, credit and payments, expenses, balances, reports, audit history.
+7
+Admin and delivery
+Approvals, moderation, disputes, shipment updates, audit log.
+8
+Test and document
+Automated tests, README, .env.example, deployment steps.
+Done means
+A buyer registers, searches, adds to cart and places an
+order
+A user switches to Seller Mode, creates a shop and lists a
+product
+Seller updates stock and moves an order to delivered
+Shopkeeper adds credit, records a payment and sees the
+right balance
+Admin approves a seller and every action is logged
+Works on desktop and mobile with loading, empty and error
+states
+Tests pass and README setup works from a clean machine
+Full copy-paste prompt: Codex_Build_Prompt.md
+
+INVESTMENT
+Funding request and use of funds
+ShopSphere  |  Marketplace + Digital Khata  |  Project Proposal
+16
+FUNDING REQUESTED
+[ Amount to be confirmed ]
+Support will take ShopSphere from this approved design to a
+working MVP with a pilot group of real shops and buyers.
+Pilot with local shopkeepers
+Test payments in sandbox first
+Report progress at every phase
+Proposed allocation
+Development and engineering
+40%
+Cloud, hosting and tools
+15%
+Testing and security review
+15%
+UI/UX design and assets
+10%
+Payment and delivery setup, legal
+10%
+Pilot onboarding and marketing
+10%
+Milestones the funder can verify
+Month 1
+Design system and
+foundation ready
+Month 2
+Seller shops and product
+catalogue live in test
+Month 3
+Cart, checkout and orders
+working
+Month 4
+Khata and admin panel
+complete
+Month 5
+Integrations tested and
+pilot launch
+Percentages and the timeline are proposed and can be adjusted after discussion.
+
+Let us build it together
+ShopSphere is at the design and planning stage. This document and prototype show
+exactly what will be built, how, and in what order. We would be grateful for your guidance
+and support to make it real.
+FOUNDER
+Muhammad Hassan Advani
+Roll No. 055
+BSCS student, GU Tech
+hassanadvani08@gmail.com
+github.com/Hassan123advani
+FOUNDER
+Muhammad Umer
+Roll No. 036
+BSCS, 1st Semester
+muhammadumera104@gmail.com
+Please note
+Screens in this document are design prototypes with
+sample data. Payments, delivery and messaging
+integrations will be described as live only after they are
+configured and tested.
+
