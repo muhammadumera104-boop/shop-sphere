@@ -5,7 +5,7 @@ Specs live in `docs/` (`Codex_Build_Prompt.md` is the main spec, `ShopSphere_Gem
 
 ## Stack
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS v4 (theme tokens in `src/app/globals.css`)
-- Prisma 6. Local dev uses SQLite (`prisma/dev.db`); schema is written to switch to PostgreSQL by changing `provider` (see README).
+- Prisma 6. PostgreSQL on Supabase (`DATABASE_URL` pooled runtime URL, `DIRECT_URL` for migrations). Deployed on Vercel. See README.
 - Auth: own session table + httpOnly cookie, bcrypt password hashing (`src/lib/auth.ts`)
 - Zod on every server action / API input (`src/lib/validation.ts`)
 - Vitest (`tests/unit`, `tests/integration`) and Playwright (`tests/e2e`)

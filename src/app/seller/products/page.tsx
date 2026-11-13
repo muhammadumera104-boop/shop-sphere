@@ -17,7 +17,7 @@ export default async function SellerProducts({ searchParams }: { searchParams: P
   const page = Math.max(1, Number(sp.page) || 1);
   const where: Prisma.ProductWhereInput = {
     shopId: user.shop.id,
-    ...(sp.q ? { OR: [{ title: { contains: sp.q } }, { sku: { contains: sp.q } }] } : {}),
+    ...(sp.q ? { OR: [{ title: { contains: sp.q, mode: "insensitive" } }, { sku: { contains: sp.q, mode: "insensitive" } }] } : {}),
     ...(sp.category ? { categoryId: sp.category } : {}),
     ...(sp.status === "OUT_OF_STOCK" ? {} : sp.status ? { status: sp.status } : { status: { not: "ARCHIVED" } }),
   };

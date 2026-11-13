@@ -71,7 +71,7 @@ export async function deleteLedgerEntry(actor: Actor, entryId: string) {
 
 export async function partiesWithBalances(shopId: string, type?: "CUSTOMER" | "SUPPLIER", q?: string) {
   const parties = await prisma.khataParty.findMany({
-    where: { shopId, ...(type ? { type } : {}), ...(q ? { OR: [{ name: { contains: q } }, { phone: { contains: q } }] } : {}) },
+    where: { shopId, ...(type ? { type } : {}), ...(q ? { OR: [{ name: { contains: q, mode: "insensitive" } }, { phone: { contains: q, mode: "insensitive" } }] } : {}) },
     include: { entries: { where: { deletedAt: null }, select: { type: true, amount: true, date: true } } },
     orderBy: { name: "asc" },
   });

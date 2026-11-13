@@ -11,7 +11,7 @@ export const metadata = { title: "Listing moderation" };
 
 export default async function ListingsPage({ searchParams }: { searchParams: Promise<{ tab?: string; q?: string }> }) {
   const { tab = "reported", q } = await searchParams;
-  const search: Prisma.ProductWhereInput = q ? { OR: [{ title: { contains: q } }, { shop: { name: { contains: q } } }] } : {};
+  const search: Prisma.ProductWhereInput = q ? { OR: [{ title: { contains: q, mode: "insensitive" } }, { shop: { name: { contains: q, mode: "insensitive" } } }] } : {};
   const where: Prisma.ProductWhereInput =
     tab === "removed"
       ? { moderation: "REMOVED", ...search }

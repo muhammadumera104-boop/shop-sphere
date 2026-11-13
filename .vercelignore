@@ -1,0 +1,15 @@
+# Files not needed to build or run the site on Vercel
+docs
+tests
+scripts
+screenshots
+test-results
+playwright-report
+back end
+front end
+.claude
+.github
+prisma/*.db
+.env
+.env.*
+!.env.example

@@ -1,16 +1,17 @@
-// ShopSphere data model.
-// Local development uses SQLite. To switch to PostgreSQL change `provider` to "postgresql",
-// set DATABASE_URL to a postgres:// URL, delete prisma/migrations and run `npx prisma migrate dev --name init`.
-// Enum-like fields are plain strings (validated with Zod + constants in src/lib/constants.ts) so the
-// schema works unchanged on both providers. Money is stored as whole rupees (Int).
+// ShopSphere data model (PostgreSQL, hosted on Supabase).
+// DATABASE_URL = pooled runtime connection (transaction pooler, port 6543, ?pgbouncer=true).
+// DIRECT_URL   = direct/session connection used by `prisma migrate` (port 5432).
+// Enum-like fields are plain strings (validated with Zod + constants in src/lib/constants.ts).
+// Money is stored as whole rupees (Int). For local SQLite instead, see README ("Local SQLite").
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {

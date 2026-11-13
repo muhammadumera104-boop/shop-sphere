@@ -13,3 +13,6 @@ playwright-report/
 test-results/
 coverage/
 screenshots/
+
+.vercel
+.env*

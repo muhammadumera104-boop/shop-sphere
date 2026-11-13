@@ -1,9 +1,12 @@
 import { prisma } from "@/lib/db";
+import { assertSafeTestDatabase } from "./safety";
 
 let n = 0;
 const uid = () => `${Date.now().toString(36)}${(n++).toString(36)}`;
 
 export async function resetDb() {
+  assertSafeTestDatabase(process.env.TEST_DATABASE_URL);
+  if (process.env.DATABASE_URL !== process.env.TEST_DATABASE_URL) throw new Error("DATABASE_URL is not the test database.");
   const tables = [
     "TicketMessage", "SupportTicket", "LedgerEntryRevision", "LedgerEntry", "KhataParty", "Expense", "ListingReport", "Review",
     "ReturnRequest", "Refund", "ShipmentEvent", "Shipment", "Payment", "OrderStatusEvent", "OrderItem", "Order", "CartItem", "Cart",

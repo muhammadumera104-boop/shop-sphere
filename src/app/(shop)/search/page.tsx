@@ -8,7 +8,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
   const raw = await searchParams;
   const p = parseSearch(raw);
   const related = p.q
-    ? await prisma.category.findMany({ where: { isActive: true, OR: p.q.split(/\s+/).map((w) => ({ name: { contains: w } })) }, take: 5 })
+    ? await prisma.category.findMany({ where: { isActive: true, OR: p.q.split(/\s+/).map((w) => ({ name: { contains: w, mode: "insensitive" } })) }, take: 5 })
     : await prisma.category.findMany({ where: { isActive: true, parentId: null }, take: 6, orderBy: { sortOrder: "asc" } });
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">

@@ -72,7 +72,8 @@ Extra: `/open-shop` (Seller Mode onboarding), `/help`, `/forbidden`, 404 page.
 
 ## Decisions
 - **Single full-stack Next.js app at the project root.** The pre-existing `back end/` and `front end/` folders were empty and are left untouched. Backend = server actions + route handlers + `src/lib/services`.
-- **SQLite for local dev**: no PostgreSQL or Docker was found on this machine. The schema uses strings instead of enums and Int money so it can switch to PostgreSQL (README documents how). PostgreSQL itself is untested.
+- **Database moved from SQLite to Supabase PostgreSQL** (13 Nov 2026): fresh PostgreSQL migration, seeded with demo data, text search made case-insensitive (`mode: "insensitive"`). The 36 unit/integration tests pass on PostgreSQL (integration tests use a separate `schema=test`). The earlier Playwright/smoke runs were on SQLite and have not been re-run on PostgreSQL.
+- **Deployed on Vercel** (`shopsphere`, region arn1). Pages checked live through Vercel's protection bypass. Image uploads are disabled there (read-only disk).
 - **Auth**: own DB sessions (random token, SHA-256 hash stored, httpOnly SameSite=Lax cookie, 30 days) + bcrypt, instead of Auth.js, to keep role checks simple and testable. Google login is shown as "Not configured".
 - **Roles**: `User.role` = BUYER | ADMIN | DELIVERY. A user is a Seller when they own a `Shop`; Seller Mode is available to any BUYER account through `/open-shop`.
 - **Cart needs login** (stored per user on the server so prices and stock are always re-checked). Guests see a "Log in to see your cart" state.

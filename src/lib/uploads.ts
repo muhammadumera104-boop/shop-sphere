@@ -21,6 +21,8 @@ export async function saveUpload(file: File | null | undefined, folder: string):
   const type = sniffImageType(buf);
   if (!type || !UPLOAD_TYPES[type]) throw new UserError("Only JPG, PNG or WebP images are allowed.");
   if ((process.env.UPLOAD_DRIVER ?? "local") !== "local") throw new UserError("Cloud storage is not configured.");
+  // Vercel's filesystem is read-only, so local-disk uploads cannot work there until cloud storage is added.
+  if (process.env.VERCEL) throw new UserError("Image uploads are not available on this deployment yet (cloud storage is not configured).");
   const name = `${crypto.randomBytes(12).toString("hex")}.${UPLOAD_TYPES[type]}`;
   const dir = path.join(process.cwd(), "public", "uploads", folder.replace(/[^a-z0-9-]/gi, ""));
   await fs.mkdir(dir, { recursive: true });

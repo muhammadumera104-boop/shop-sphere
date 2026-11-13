@@ -53,11 +53,11 @@ export async function searchProducts(params: SearchParams) {
     for (const w of words) {
       and.push({
         OR: [
-          { title: { contains: w } },
-          { brand: { contains: w } },
-          { description: { contains: w } },
-          { shop: { name: { contains: w } } },
-          { category: { name: { contains: w } } },
+          { title: { contains: w, mode: "insensitive" } },
+          { brand: { contains: w, mode: "insensitive" } },
+          { description: { contains: w, mode: "insensitive" } },
+          { shop: { name: { contains: w, mode: "insensitive" } } },
+          { category: { name: { contains: w, mode: "insensitive" } } },
         ],
       });
     }

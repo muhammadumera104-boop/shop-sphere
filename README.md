@@ -4,7 +4,8 @@ A Daraz-style multi-vendor marketplace with a built-in Easy Khata-style credit l
 One account can buy, and after opening a shop, sell (Seller Mode). Roles: Guest, Buyer, Seller, Delivery Partner, Admin.
 
 - **Stack:** Next.js 15 (App Router) + TypeScript, Tailwind CSS 4, Prisma 6, Zod, bcrypt, Vitest, Playwright
-- **Database:** SQLite for local development (no PostgreSQL/Docker was available on the build machine). The schema is written to switch to PostgreSQL (see below).
+- **Database:** PostgreSQL on Supabase (region eu-north-1), used both locally and by the live site.
+- **Live site:** https://shopsphere-xi-ten.vercel.app (Vercel, region Stockholm). Currently protected by Vercel login; see "Deployment".
 - **Payments:** Cash on Delivery only.
 - Specs and design reference: `docs/`. Project rules: `CLAUDE.md`. Build log and decisions: `PROGRESS.md`.
 
@@ -20,11 +21,13 @@ npm install
 cp .env.example .env
 ```
 
+Then edit `.env` and put your own Supabase connection strings in `DATABASE_URL` and `DIRECT_URL` (see "Database" below). `.env` is never committed.
+
 ```bash
 npm run db:setup
 ```
 
-`db:setup` creates `prisma/dev.db`, applies the migrations and loads the sample data. Then:
+`db:setup` applies the migrations to the database in `.env` and loads the sample data (**the seed wipes the tables first**). Then:
 
 ```bash
 npm run dev
@@ -59,14 +62,15 @@ The seed script refuses to run when `NODE_ENV=production`.
 | `npm run db:deploy` | Apply migrations in production (`prisma migrate deploy`) |
 | `npm run db:seed` | Reload sample data (**wipes** the dev database tables first) |
 | `npm run db:reset` | Drop and recreate the dev database, then seed |
-| `npm test` | Vitest unit + integration tests (uses a separate `prisma/test.db`) |
+| `npm test` | Vitest. Unit tests always run; integration tests run only when `TEST_DATABASE_URL` is set (see Tests) |
 | `npm run test:e2e` | Playwright end-to-end tests (see below) |
 | `npm run smoke` | Requests all pages as every role and checks status codes/access (app must be running) |
 | `npm run screenshots` | Saves a screenshot of all 38 pages to `screenshots/` (app must be running) |
 
 ### Tests
 
-- `npm test`: 36 tests. Pricing, coupons and delivery fees; role and ownership checks; order status transitions; checkout in a transaction with stock reservation, oversell and concurrency; delivery confirmation with the customer code; Khata balances, statements, edit/delete history and cross-shop isolation; CSV escaping; rate limiting; upload type sniffing.
+- `npm test`: 36 tests (21 unit, 15 integration). Pricing, coupons and delivery fees; role and ownership checks; order status transitions; checkout in a transaction with stock reservation, oversell and concurrency; delivery confirmation with the customer code; Khata balances, statements, edit/delete history and cross-shop isolation; CSV escaping; rate limiting; upload type sniffing.
+- Integration tests wipe tables, so they refuse to run unless `TEST_DATABASE_URL` points at localhost or contains `schema=test` (a separate schema in the same Supabase database). Example: your `DIRECT_URL` + `?schema=test`. They are slow over a remote database (about 5 minutes).
 - `npm run test:e2e`: 15 browser tests against the **seeded dev database**. Run `npm run db:seed` first; the tests change data such as orders, stock and Khata entries. They use your installed Google Chrome (`channel: "chrome"`). To use Playwright's own browser, run `npx playwright install chromium` and set `PW_CHANNEL=chromium`. Playwright starts `npm start` itself if nothing is running on :3000, so build first (`npm run build`).
 
 ## Where things are
@@ -107,24 +111,30 @@ tests/unit  tests/integration  tests/e2e
 | Seller payouts / commission settlement | Not built. Commission % is a setting for reporting only. |
 | Multi-instance rate limiting | In-memory, single server process only |
 | CI | `.github/workflows/ci.yml` is written but has **not been run** (no GitHub remote) |
-| Deployment | **Not deployed.** Steps below are instructions, not tested here. |
+| Deployment | Deployed to Vercel (see below). Image uploads do not work there (no cloud storage). |
 
-## Switching to PostgreSQL
+## Database (Supabase PostgreSQL)
 
-1. In `prisma/schema.prisma` set `provider = "postgresql"`.
-2. Set `DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/shopsphere?schema=public"` in `.env`.
-3. Migrations are provider-specific, so recreate them: delete `prisma/migrations/`, then run `npx prisma migrate dev --name init`.
-4. `npm run db:seed` (development only).
+`.env` needs two URLs for the same Supabase project (copy them from Supabase: Connect, then Session pooler / Transaction pooler):
 
-The schema avoids SQLite-only features: enum-like fields are strings validated by Zod, money is `Int` rupees, and the raw SQL uses quoted identifiers and `CASE` (no `MAX(a,b)`). PostgreSQL itself has **not been tested**, because it was not available on the build machine.
+```
+DATABASE_URL="postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"
+DIRECT_URL="postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:5432/postgres"
+```
 
-## Deployment (not yet performed)
+`DATABASE_URL` (transaction pooler) is used by the running app; `DIRECT_URL` (session pooler) is used by `prisma migrate`. Apply the schema with `npx prisma migrate deploy`, then `npm run db:seed` for demo data (development/demo only).
+The direct `db.<ref>.supabase.co` host is IPv6-only, which many networks lack, so use the pooler hosts.
+To use a local PostgreSQL instead, point both URLs at it. SQLite is no longer supported: the migrations are PostgreSQL-specific and text search relies on `mode: "insensitive"`.
 
-1. Provision PostgreSQL and switch the provider (above). SQLite is not suitable for multi-instance hosting.
-2. Set environment variables: `DATABASE_URL`, `COOKIE_SECURE=true`, `SESSION_COOKIE_NAME`, `UPLOAD_DRIVER=local` (needs a persistent disk) or implement S3 in `src/lib/uploads.ts`.
-3. `npm ci && npx prisma migrate deploy && npm run build`.
-4. Run `npm start` behind HTTPS (nginx/Caddy or a platform such as Railway/Render/Vercel). Do **not** run the seed in production.
-5. Back up the database regularly. Watch the server logs (unknown errors are logged, while users only see a generic message).
+## Deployment (Vercel)
+
+Deployed with the Vercel CLI (project `shopsphere`, `vercel.json` pins region `arn1` next to the database):
+
+1. Environment variables (Production, stored encrypted): `DATABASE_URL`, `DIRECT_URL`, `COOKIE_SECURE=true`.
+2. `vercel deploy --prod`. The build runs `prisma generate` (postinstall), lint, type check and `next build`.
+3. Migrations are not run by the build. Run `npx prisma migrate deploy` from a machine with `DIRECT_URL` set whenever the schema changes.
+4. **Deployment Protection** is on by default, so visitors must log in to Vercel. Turn it off in Vercel (Project Settings, Deployment Protection) only after changing the demo passwords: the live database contains the demo accounts listed above.
+5. Uploads (product, shop, review, return and delivery photos) save to the local disk, which is read-only on Vercel, so they show a clear error. Cloud storage (for example Supabase Storage) still needs to be added.
 
 ## Known limitations
 
