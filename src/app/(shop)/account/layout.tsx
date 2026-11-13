@@ -14,7 +14,7 @@ const items = [
 export default async function AccountLayout({ children }: { children: React.ReactNode }) {
   await pageUser("/account/profile", ["BUYER"]);
   return (
-    <div className="area-account bg-page max-w-7xl mx-auto px-4 sm:px-6 py-6 grid lg:grid-cols-[230px_1fr] gap-6 items-start rounded-3xl my-4">
+    <div className="area-account bg-page max-w-7xl mx-auto px-4 sm:px-6 py-6 grid grid-cols-1 lg:grid-cols-[230px_minmax(0,1fr)] gap-6 items-start rounded-3xl my-4">
       <div className="lg:sticky lg:top-24">
         <AccountNav items={items} />
       </div>

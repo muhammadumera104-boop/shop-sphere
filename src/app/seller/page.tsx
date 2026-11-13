@@ -43,10 +43,10 @@ export default async function SellerDashboard({ searchParams }: { searchParams: 
       )}
       <PageTitle title={`${greeting()}, ${user.shop.name}`} sample action={<LinkButton href="/seller/products/new" variant="emerald">+ Add product</LinkButton>} />
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
-        <KpiCard label="Orders today" value={todayOrders.length} tone="indigo" />
-        <KpiCard label="Revenue today" value={formatRs(revenueToday)} tone="emerald" hint={`${formatRs(report.sales)} last 7 days`} />
-        <KpiCard label="Low stock" value={`${lowStock} items`} tone="rose" hint={<Link href="/seller/inventory?filter=low" className="underline">View inventory</Link>} />
-        <KpiCard label="Khata due" value={formatRs(khata.receivable)} tone="gold" hint={`${khata.customers} customers`} />
+        <KpiCard label="Orders today" value={todayOrders.length} tone="indigo" href="/seller/orders" />
+        <KpiCard label="Revenue today" value={formatRs(revenueToday)} tone="emerald" hint={`${formatRs(report.sales)} last 7 days`} href="/seller/reports" />
+        <KpiCard label="Low stock" value={`${lowStock} items`} tone="rose" hint="View inventory" href="/seller/inventory?filter=low" />
+        <KpiCard label="Khata due" value={formatRs(khata.receivable)} tone="gold" hint={`${khata.customers} customers`} href="/seller/khata/customers" />
       </div>
       <div className="grid xl:grid-cols-[1.4fr_1fr] gap-6 mb-6">
         <Card className="p-5">

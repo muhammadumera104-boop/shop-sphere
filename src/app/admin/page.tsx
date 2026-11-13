@@ -35,10 +35,10 @@ export default async function AdminDashboard() {
     <>
       <PageTitle title="Dashboard" subtitle="Platform overview" />
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
-        <KpiCard label="Gross sales" value={compact(gross._sum.total ?? 0)} tone="indigo" hint="Excludes cancelled & returned" />
-        <KpiCard label="Orders" value={orderCount.toLocaleString("en-PK")} tone="violet" />
-        <KpiCard label="Active sellers" value={activeSellers} tone="emerald" />
-        <KpiCard label="Open disputes" value={disputes} tone="rose" hint={<Link href="/admin/disputes?tab=disputes" className="underline">Review</Link>} />
+        <KpiCard label="Gross sales" value={compact(gross._sum.total ?? 0)} tone="indigo" hint="Excludes cancelled & returned" href="/admin/disputes?tab=all" />
+        <KpiCard label="Orders" value={orderCount.toLocaleString("en-PK")} tone="violet" href="/admin/disputes?tab=all" />
+        <KpiCard label="Active sellers" value={activeSellers} tone="emerald" href="/admin/sellers" />
+        <KpiCard label="Open disputes" value={disputes} tone="rose" hint="Review cases" href="/admin/disputes?tab=disputes" />
       </div>
       <div className="grid xl:grid-cols-[1.5fr_1fr] gap-6 mb-6">
         <Card className="p-5">

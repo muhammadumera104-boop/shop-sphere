@@ -23,7 +23,25 @@ export function Reveal({ children, className, index = 0, as: Tag = "div" }: { ch
       { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
     );
     io.observe(el);
-    return () => io.disconnect();
+    // Fast scrolling can jump past a short block without an intersection event, so also reveal anything the viewport has reached or passed.
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.94) {
+        setShown(true);
+        io.disconnect();
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
   return (
     <Tag ref={ref as never} className={cx(armed && "reveal", armed && shown && "in", className)} style={{ "--i": Math.min(index, 8) } as CSSProperties}>

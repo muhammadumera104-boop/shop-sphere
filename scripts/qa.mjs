@@ -59,12 +59,12 @@ for (const [sizeName, viewport] of Object.entries(sizes)) {
       // scroll through so lazy images and reveals trigger
       await page.evaluate(async () => {
         for (let y = 0; y < document.body.scrollHeight; y += 500) {
-          window.scrollTo(0, y);
+          window.scrollTo({ top: y, behavior: "instant" });
           await new Promise((r) => setTimeout(r, 40));
         }
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: "instant" });
       });
-      await page.waitForTimeout(350);
+      await page.waitForTimeout(900);
       const info = await page.evaluate(() => ({
         overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
         broken: [...document.images].filter((i) => i.complete && i.naturalWidth === 0).map((i) => i.src.slice(0, 100)),

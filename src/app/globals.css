@@ -182,3 +182,7 @@ dialog.sheet[open] > .sheet-body { animation: sheet-in 0.3s cubic-bezier(0.22, 1
   .reveal { opacity: 1; transform: none; }
   .skeleton { animation: none; }
 }
+
+/* Overflow guards: grid/flex children may shrink below their content width, and tab strips scroll instead of widening the page. */
+.grid > * { min-width: 0; }
+nav[aria-label="Tabs"] { min-width: 0; max-width: 100%; }

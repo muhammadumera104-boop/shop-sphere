@@ -13,7 +13,8 @@ import { ProductCard, ProductGrid } from "@/components/ProductCard";
 import { BuyBox, WishlistButton } from "@/components/ProductActions";
 import { ClientTabs } from "@/components/ClientTabs";
 import { ActionForm, SubmitButton } from "@/components/forms";
-import { Avatar, Badge, EmptyState, ProductTile, Stars } from "@/components/ui";
+import { Avatar, Badge, EmptyState, Stars } from "@/components/ui";
+import { ProductGallery } from "@/components/ProductGallery";
 import { ShieldIcon, TruckIcon } from "@/components/icons";
 
 async function load(slug: string) {
@@ -81,14 +82,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </nav>
 
       <div className="grid lg:grid-cols-2 gap-8">
-        <div>
-          <ProductTile gradient={product.gradient} imageUrl={product.images[0]?.url} label={product.title} className="aspect-square w-full rounded-2xl" />
-          <div className="grid grid-cols-4 gap-3 mt-3">
-            {thumbs.slice(0, 4).map((t, i) => (
-              <ProductTile key={t.id} gradient={"g" in t ? t.g : product.gradient} imageUrl={t.url} label={`${product.title} view ${i + 1}`} className="aspect-square w-full rounded-xl" />
-            ))}
-          </div>
-        </div>
+        <ProductGallery title={product.title} slides={thumbs.slice(0, 4).map((t) => ({ id: String(t.id), url: t.url, gradient: "g" in t ? t.g : product.gradient }))} />
 
         <div className="space-y-6">
           <div>

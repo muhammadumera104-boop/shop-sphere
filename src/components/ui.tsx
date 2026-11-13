@@ -207,7 +207,7 @@ export function PageTitle({ title, subtitle, action, sample }: { title: ReactNod
   );
 }
 
-export function KpiCard({ label, value, tone = "indigo", hint }: { label: string; value: ReactNode; tone?: "indigo" | "emerald" | "rose" | "gold" | "violet" | "sky"; hint?: ReactNode }) {
+export function KpiCard({ label, value, tone = "indigo", hint, href }: { label: string; value: ReactNode; tone?: "indigo" | "emerald" | "rose" | "gold" | "violet" | "sky"; hint?: ReactNode; href?: string }) {
   const edge = {
     indigo: "border-l-indigo-600",
     emerald: "border-l-emerald-500",
@@ -216,13 +216,27 @@ export function KpiCard({ label, value, tone = "indigo", hint }: { label: string
     violet: "border-l-violet-600",
     sky: "border-l-sky-500",
   };
-  return (
-    <div className={cx("card p-4 border-l-4", edge[tone])}>
-      <p className="label-caps">{label}</p>
+  const body = (
+    <>
+      <p className="label-caps flex items-center justify-between">
+        {label}
+        {href && (
+          <span aria-hidden className="text-gray-300 group-hover:text-indigo-600 group-hover:translate-x-0.5 transition">
+            →
+          </span>
+        )}
+      </p>
       <p className="text-2xl font-bold text-ink mt-1.5">{value}</p>
       {hint && <p className="text-xs text-muted mt-1">{hint}</p>}
-    </div>
+    </>
   );
+  if (href)
+    return (
+      <Link href={href} className={cx("card card-hover group block p-4 border-l-4", edge[tone])} aria-label={`${label}: view details`}>
+        {body}
+      </Link>
+    );
+  return <div className={cx("card p-4 border-l-4", edge[tone])}>{body}</div>;
 }
 
 export function Tabs({ tabs, active }: { tabs: { key: string; label: ReactNode; href: string }[]; active: string }) {
@@ -304,7 +318,7 @@ export function NotConfigured({ children = "Not configured" }: { children?: Reac
 
 export function Table({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cx("overflow-x-auto", className)}>
+    <div className={cx("relative overflow-x-auto", className)}>
       <table className="w-full text-sm">{children}</table>
     </div>
   );
