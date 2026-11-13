@@ -23,7 +23,7 @@ export type ButtonVariant = keyof typeof VARIANTS;
 
 export function buttonClass(variant: ButtonVariant = "primary", size: keyof typeof SIZES = "md", extra?: string) {
   return cx(
-    "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap",
+    "inline-flex items-center justify-center gap-2 rounded-full font-medium hover:-translate-y-px hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap",
     VARIANTS[variant],
     SIZES[size],
     extra,
@@ -157,7 +157,7 @@ export function ProductTile({
 }) {
   if (imageUrl) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={imageUrl} alt={label ?? ""} className={cx("object-cover bg-gray-100", className)} />;
+    return <img src={imageUrl} alt={label ?? ""} loading="lazy" decoding="async" className={cx("object-cover bg-gray-100", className)} />;
   }
   return (
     <div role="img" aria-label={label ?? "Product image"} className={cx("relative overflow-hidden bg-gradient-to-br", GRADIENTS[gradient % GRADIENTS.length], className)}>

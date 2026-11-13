@@ -8,7 +8,7 @@ export const metadata = { title: { default: "My deliveries", template: "%s | Sho
 export default async function DeliveryLayout({ children }: { children: React.ReactNode }) {
   await pageUser("/delivery", ["DELIVERY"]);
   return (
-    <div className="min-h-screen bg-page sm:py-6">
+    <div className="area area-delivery bg-page sm:py-6">
       <div className="mx-auto max-w-md min-h-screen sm:min-h-[calc(100vh-3rem)] bg-page sm:rounded-[2rem] sm:shadow-xl sm:border sm:border-line overflow-hidden relative pb-20">
         <main id="main">{children}</main>
         <nav aria-label="Delivery" className="fixed sm:absolute bottom-0 inset-x-0 mx-auto max-w-md bg-white border-t border-line grid grid-cols-4 text-[11px] font-medium">

@@ -1,6 +1,7 @@
 // Development-only sample data. Refuses to run in production.
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { productImageUrl } from "./product-images";
 
 if (process.env.NODE_ENV === "production") {
   console.error("Refusing to seed sample data in production.");
@@ -156,6 +157,7 @@ async function main() {
         specs: JSON.stringify((p.specs ?? [["Brand", p.brand], ["Condition", "New"]]).map(([key, value]) => ({ key, value }))),
         createdAt: daysAgo(30 - i),
         variants: { create: p.variants.map(([name, stockQuantity]) => ({ name, stockQuantity })) },
+        images: productImageUrl(p.sku) ? { create: [{ url: productImageUrl(p.sku)!, sortOrder: 0 }] } : undefined,
       },
       include: { variants: true },
     });

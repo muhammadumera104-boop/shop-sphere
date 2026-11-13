@@ -35,7 +35,7 @@ export function DashboardShell({
     </div>
   );
   return (
-    <div className="min-h-screen lg:grid lg:grid-cols-[250px_1fr]">
+    <div className={cx("area min-h-screen lg:grid lg:grid-cols-[250px_1fr]", labelTone === "gold" ? "area-seller" : "area-admin")}>
       <aside className="hidden lg:block bg-navy p-5 sticky top-0 h-screen">{sidebar}</aside>
       <div className="lg:hidden sticky top-0 z-40 bg-navy text-white flex items-center justify-between px-4 h-14">
         <Logo dark />
@@ -51,7 +51,7 @@ export function DashboardShell({
       )}
       <div className="min-w-0">
         {topRight && <div className="hidden lg:flex justify-end items-center gap-3 px-8 pt-5">{topRight}</div>}
-        <main id="main" className="px-4 sm:px-6 lg:px-8 py-6">
+        <main id="main" className="px-4 sm:px-6 lg:px-8 py-6 page-enter">
           {children}
         </main>
       </div>
